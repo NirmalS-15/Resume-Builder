@@ -1,0 +1,98 @@
+<style>
+  .t-azurill{ font-family:var(--resume-font,Inter),sans-serif; width:100%; min-height:297mm; background:#fff; color:#111; }
+  .t-azurill .accent{ color: var(--resume-primary, #c49b2c); }
+  .t-azurill .top{ text-align:center; padding:22px 24px 10px; }
+  .t-azurill .photo{ display:flex; justify-content:center; margin-bottom:10px; }
+  .t-azurill .photo img{ width:86px; height:86px; object-fit:cover; border-radius:10px; border:2px solid #eee; }
+  .t-azurill h1{ margin:6px 0 0; font-size:34px; }
+  .t-azurill h2{ margin:6px 0 0; font-size:16px; font-weight:600; color:#444; }
+  .t-azurill .meta{ margin-top:10px; font-size:12px; color:#444; display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+  .t-azurill .grid{ display:grid; grid-template-columns: 30% 70%; gap:18px; padding:12px 26px 26px; }
+  .t-azurill .sidebar{ padding-right:14px; border-right:2px solid #eee; }
+  .t-azurill .sec{ margin:14px 0; }
+  .t-azurill .sec h3{ margin:0 0 8px; font-size:14px; font-weight:800; }
+  .t-azurill ul{ margin:8px 0 0 16px; padding:0; }
+  .t-azurill li{ margin:6px 0; font-size:12.5px; line-height:1.45; }
+  .t-azurill .main h3{ border-left:3px solid var(--resume-primary,#c49b2c); padding-left:10px; }
+  .t-azurill .job{ margin-top:12px; }
+  .t-azurill .job .row{ display:flex; justify-content:space-between; gap:10px; font-size:12.5px; }
+  .t-azurill .muted{ color:#666; }
+  .t-azurill a{ color:#1f4fd1; text-decoration:none; }
+</style>
+
+<div class="t-azurill">
+  <div class="top">
+    <div class="photo">
+      <img id="resumePhoto" class="resume-photo" alt="photo">
+    </div>
+    <h1 id="nameText">YOUR NAME</h1>
+    <h2 id="titleText">YOUR JOB TITLE</h2>
+
+    <div class="meta">
+      <span>📍 <span id="locationText">Your City</span></span>
+      <span>☎ <span id="phoneText">+91 00000 00000</span></span>
+      <span>✉ <span id="emailText">you@email.com</span></span>
+      <span>🔗 <a id="linkedinLink" href="#">LinkedIn</a></span>
+      <span>🔗 <a id="githubLink" href="#">GitHub</a></span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <aside class="sidebar">
+      <div class="sec">
+        <h3 class="accent">Skills</h3>
+        <ul id="skillsList"></ul>
+      </div>
+
+      <div class="sec">
+        <h3 class="accent">Education</h3>
+        <div style="font-size:12.5px; line-height:1.6">
+          <b id="collegeText">College / University</b><br>
+          <span id="degreeText">Degree</span> — <span id="majorText">Major</span><br>
+          <span class="muted" id="eduYearsText">Years</span> • <span class="muted" id="eduCityText">City</span>
+        </div>
+      </div>
+
+      <div class="sec">
+        <h3 class="accent">Profiles</h3>
+        <div style="font-size:12.5px; line-height:1.6">
+          <div>🔗 <a id="linkedinLink" href="#">LinkedIn</a></div>
+          <div>🔗 <a id="githubLink" href="#">GitHub</a></div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="sec">
+        <h3 class="accent">Summary</h3>
+        <div id="summaryText" style="font-size:12.7px; line-height:1.65;"></div>
+      </div>
+
+      <div class="sec">
+        <h3 class="accent">Experience</h3>
+
+        <div class="job">
+          <div class="row">
+            <div>
+              <b id="job1CompanyText">Company</b><br>
+              <span id="job1TitleText">Job Title</span><br>
+              <span class="muted" id="job1YearsText">Years</span> • <span class="muted" id="job1CityText">City</span>
+            </div>
+          </div>
+          <ul id="job1Points"></ul>
+        </div>
+
+        <div class="job">
+          <div class="row">
+            <div>
+              <b id="job2CompanyText">Company</b><br>
+              <span id="job2TitleText">Job Title</span><br>
+              <span class="muted" id="job2YearsText">Years</span> • <span class="muted" id="job2CityText">City</span>
+            </div>
+          </div>
+          <ul id="job2Points"></ul>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

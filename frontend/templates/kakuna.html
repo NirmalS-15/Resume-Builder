@@ -1,0 +1,119 @@
+<style>
+  .t-kakuna{
+    font-family:var(--resume-font,Inter),sans-serif;
+    width:100%; min-height:297mm; background:#fff; color:#111;
+  }
+  .t-kakuna .head{
+    background: rgba(140,111,88,0.20);
+    border-bottom: 2px solid rgba(0,0,0,0.06);
+    padding: 22px 26px;
+    display:grid;
+    grid-template-columns: 1fr 86px;
+    gap:14px;
+    align-items:start;
+  }
+  .t-kakuna .head img{
+    width:86px;height:86px;object-fit:cover;border-radius:12px;border:1px solid rgba(0,0,0,0.12);
+  }
+  .t-kakuna h1{ margin:0; font-size:32px; }
+  .t-kakuna h2{ margin:6px 0 0; font-size:14px; font-weight:700; color:#333; }
+  .t-kakuna .meta{ margin-top:10px; display:flex; gap:14px; flex-wrap:wrap; font-size:12px; color:#333; }
+  .t-kakuna .grid{ display:grid; grid-template-columns: 60% 40%; gap:18px; padding: 18px 26px 26px; }
+  .t-kakuna .sidebar{ border-left:2px solid rgba(0,0,0,0.06); padding-left:14px; }
+  .t-kakuna .sec{ margin-top:14px; }
+  .t-kakuna .sec h3{
+    margin:0 0 8px; font-size:13px; font-weight:900;
+    border-bottom:2px solid rgba(0,0,0,0.12);
+    padding-bottom:6px;
+    color: var(--resume-primary, #8c6f58);
+  }
+  .t-kakuna .box{ font-size:12.6px; line-height:1.65; }
+  .t-kakuna ul{ margin:8px 0 0 18px; padding:0; }
+  .t-kakuna li{ margin:6px 0; }
+  .t-kakuna .job .row{ display:flex; justify-content:space-between; gap:12px; }
+  .t-kakuna .mut{ color:#666; }
+  .t-kakuna a{ color:#1f4fd1; text-decoration:none; }
+</style>
+
+<div class="t-kakuna">
+  <div class="head">
+    <div>
+      <h1 id="nameText">YOUR NAME</h1>
+      <h2 id="titleText">YOUR JOB TITLE</h2>
+      <div class="meta">
+        <span>📍 <span id="locationText">Your City</span></span>
+        <span>☎ <span id="phoneText">+91 00000 00000</span></span>
+        <span>✉ <span id="emailText">you@email.com</span></span>
+        <span>🔗 <a id="linkedinLink" href="#">LinkedIn</a></span>
+        <span>🔗 <a id="githubLink" href="#">GitHub</a></span>
+      </div>
+    </div>
+    <img id="resumePhoto" class="resume-photo" alt="photo">
+  </div>
+
+  <div class="grid">
+    <main>
+      <div class="sec">
+        <h3>Summary</h3>
+        <div class="box" id="summaryText"></div>
+      </div>
+
+      <div class="sec">
+        <h3>Experience</h3>
+
+        <div class="box">
+          <div class="job">
+            <div class="row">
+              <div>
+                <b id="job1CompanyText">Company</b><br>
+                <span id="job1TitleText">Job Title</span>
+              </div>
+              <div style="text-align:right">
+                <b id="job1YearsText">Years</b><br>
+                <span class="mut" id="job1CityText">City</span>
+              </div>
+            </div>
+            <ul id="job1Points"></ul>
+          </div>
+
+          <div class="job" style="margin-top:14px;">
+            <div class="row">
+              <div>
+                <b id="job2CompanyText">Company</b><br>
+                <span id="job2TitleText">Job Title</span>
+              </div>
+              <div style="text-align:right">
+                <b id="job2YearsText">Years</b><br>
+                <span class="mut" id="job2CityText">City</span>
+              </div>
+            </div>
+            <ul id="job2Points"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <h3>Education</h3>
+        <div class="box">
+          <b id="collegeText">College / University</b><br>
+          <span id="degreeText">Degree</span> — <span id="majorText">Major</span><br>
+          <span class="mut" id="eduYearsText">Years</span> • <span class="mut" id="eduCityText">City</span>
+        </div>
+      </div>
+    </main>
+
+    <aside class="sidebar">
+      <div class="sec">
+        <h3>Skills</h3>
+        <ul id="skillsList"></ul>
+      </div>
+      <div class="sec">
+        <h3>Profiles</h3>
+        <div class="box">
+          <div>🔗 <a id="linkedinLink" href="#">LinkedIn</a></div>
+          <div>🔗 <a id="githubLink" href="#">GitHub</a></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>

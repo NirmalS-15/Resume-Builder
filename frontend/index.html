@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume Builder | Professional Resume Maker</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Optional: your existing CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel: rgba(255,255,255,0.06);
+      --line: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.65);
+      --brand:#2563eb;
+      --brand2:#7c3aed;
+      --radius:18px;
+      --shadow: 0 24px 80px rgba(0,0,0,0.45);
+    }
+
+    body{
+      margin:0;
+      font-family: Inter, sans-serif;
+      background:
+        radial-gradient(1200px 700px at 30% -10%, rgba(37,99,235,0.30), transparent 60%),
+        radial-gradient(1100px 650px at 85% 0%, rgba(124,58,237,0.28), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* App bar */
+    .appbar{
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 16px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(10px);
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:0.2px;
+    }
+    .brand-badge{
+      width:34px;height:34px;
+      border-radius:12px;
+      display:grid;place-items:center;
+      background: linear-gradient(135deg,var(--brand),var(--brand2));
+      box-shadow: 0 10px 28px rgba(37,99,235,0.30);
+    }
+    .brand small{
+      display:block;
+      font-weight:600;
+      color: var(--muted);
+      margin-top:2px;
+      letter-spacing:0;
+    }
+
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .btn{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding:10px 12px;
+      border-radius: 12px;
+      font-weight:800;
+      font-size:13px;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      text-decoration:none;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.10);
+    }
+
+    .btn-primary{
+      border:0;
+      background: linear-gradient(135deg,var(--brand),var(--brand2));
+      box-shadow: 0 14px 40px rgba(37,99,235,0.25);
+    }
+
+    .shell{
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 16px 72px;
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items:center;
+      margin-top: 18px;
+    }
+
+    .hero-card{
+      background: var(--panel);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .hero h1{
+      margin:0;
+      font-size: 44px;
+      line-height: 1.08;
+      letter-spacing: 0.2px;
+    }
+    .hero h1{
+  margin:0;
+  font-size: 54px;        /* ✅ bigger */
+  line-height: 1.06;
+  letter-spacing: 0.2px;
+}
+
+.hero p{
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 16px;        /* ✅ bigger */
+  line-height: 1.9;
+  max-width: 62ch;
+}
+
+
+    .hero-cta{
+      margin-top: 16px;
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+      align-items:center;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,0.05);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .preview{
+      overflow:hidden;
+      position:relative;
+      padding: 0;
+    }
+    .preview img{
+  width:100%;
+  display:block;
+  border-radius: var(--radius);
+  border:1px solid var(--line);
+  background: rgba(255,255,255,0.03);
+  transform: scale(1.03); /* ✅ slight zoom */
+}
+
+
+
+    /* Sections */
+    .section{
+      margin-top: 26px;
+    }
+    .section-head{
+  display:flex;
+  flex-direction:column;
+  align-items:center;      /* ✅ center */
+  justify-content:center;
+  text-align:center;       /* ✅ center text */
+  gap:8px;
+  margin-bottom: 14px;
+}
+
+    .section-title{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: 0.2px;
+    }
+    .section-sub{
+  margin:0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 70ch;
+  text-align:center;       /* ✅ */
+}
+
+
+    /* Features */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .card{
+      background: var(--panel);
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 18px 70px rgba(0,0,0,0.25);
+      transition: transform .12s ease, background .12s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .icon{
+      width:42px;height:42px;
+      border-radius:16px;
+      display:grid;place-items:center;
+      background: rgba(37,99,235,0.18);
+      border:1px solid rgba(37,99,235,0.35);
+      margin-bottom: 10px;
+    }
+    .card h3{
+      margin:0;
+      font-size: 13px;
+      letter-spacing: 0.2px;
+    }
+    .card p{
+      margin:8px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    /* Templates grid */
+    .templates-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .template-card{
+      background: var(--panel);
+      border:1px solid var(--line);
+      border-radius: 18px;
+      overflow:hidden;
+      position:relative;
+      box-shadow: 0 18px 70px rgba(0,0,0,0.25);
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .template-card:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .template-preview{
+      width:100%;
+      aspect-ratio: 1/1.414;
+      background: rgba(255,255,255,0.04);
+      overflow:hidden;
+    }
+    .template-preview img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    .template-overlay{
+      position:absolute;
+      inset:0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      background: rgba(37,99,235,0.90);
+      opacity:0;
+      transition: opacity .18s ease;
+      color: white;
+      font-weight: 900;
+    }
+    .template-card:hover .template-overlay{
+      opacity:1;
+    }
+    .badge{
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.16);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Reviews */
+    .review-wrap{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .review{
+      background: var(--panel);
+      border:1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 18px 70px rgba(0,0,0,0.25);
+      position: relative;
+      overflow:hidden;
+      min-height: 110px;
+    }
+    .quote{
+      position:absolute;
+      top:14px;
+      right:14px;
+      opacity:0.22;
+      font-size: 22px;
+    }
+    .review p{
+      margin:0;
+      color: rgba(255,255,255,0.86);
+      font-size: 13px;
+      line-height: 1.8;
+      max-width: 82ch;
+    }
+    .review h4{
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    footer{
+      text-align:center;
+      color: rgba(255,255,255,0.55);
+      padding: 18px 0 8px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: repeat(2,1fr); }
+      .templates-grid{ grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 560px){
+      .grid{ grid-template-columns: 1fr; }
+      .templates-grid{ grid-template-columns: 1fr; }
+      .hero h1{ font-size: 36px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top bar -->
+  <header class="appbar">
+    <div class="brand">
+      <div class="brand-badge"><i class="fa-solid fa-file-lines"></i></div>
+      <div>
+        Resume Builder
+        <small>Build professional resumes in minutes</small>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <a class="btn" href="#features"><i class="fa-solid fa-sparkles"></i> Features</a>
+      <a class="btn" href="#templates"><i class="fa-solid fa-layer-group"></i> Templates</a>
+      <a class="btn" href="#reviews"><i class="fa-solid fa-star"></i> Reviews</a>
+      <a class="btn btn-primary" href="login.html"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+    </div>
+  </header>
+
+  <main class="shell">
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-card">
+        <h1>Build a resume<br><span>that recruiters love</span></h1>
+        <p>
+          Choose a modern template, edit with live preview, upload an existing resume to auto-fill fields,
+          and download a recruiter-ready resume in minutes.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="login.html">
+            Create My Resume <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <span class="pill"><i class="fa-solid fa-eye"></i> Live Preview</span>
+          <span class="pill"><i class="fa-solid fa-file-pdf"></i> Print / Download</span>
+          <span class="pill"><i class="fa-solid fa-layer-group"></i> 9 Templates</span>
+        </div>
+      </div>
+
+      <div class="hero-card preview">
+        <img src="assets/resume-preview.png" alt="Resume Preview">
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" id="features">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Everything you need to build a great resume</h2>
+          <p class="section-sub">Simple editing, powerful templates, and fast downloads — designed for students and professionals.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-pen-to-square"></i></div>
+          <h3>Easy Editor</h3>
+          <p>Fill guided sections and instantly see the preview update.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-eye"></i></div>
+          <h3>Live Preview</h3>
+          <p>As you type, your resume layout updates in real time.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-layer-group"></i></div>
+          <h3>Multiple Templates</h3>
+          <p>Pick from clean, modern designs that look professional.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-file-pdf"></i></div>
+          <h3>PDF Export</h3>
+          <p>Print or download your resume quickly with one click.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEMPLATES -->
+    <section class="section" id="templates">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Explore Our Templates</h2>
+          <p class="section-sub">Click any template to start building your resume (login required).</p>
+        </div>
+        <a class="btn" href="login.html"><i class="fa-solid fa-bolt"></i> Start Now</a>
+      </div>
+
+      <div class="templates-grid">
+        <!-- 9 Templates -->
+        <div class="template-card" onclick="goLogin()">
+          <div class="template-preview"><img src="assets/azurill.jpg" alt="Azurill"></div>
+          <div class="template-overlay">
+            <div>Use Template</div>
+            <div class="badge">azurill</div>
+          </div>
+        </div>
+
+        <div class="template-card" onclick="goLogin()">
+          <div class="template-preview"><img src="assets/bronzor.jpg" alt="Bronzor"></div>
+          <div class="template-overlay">
+            <div>Use Template</div>
+            <div class="badge">bronzor</div>
+          </div>
+        </div>
+
+        <div class="template-card" onclick="goLogin()">
+          <div class="template-preview"><img src="assets/chikorita.jpg" alt="Chikorita"></div>
+          <div class="template-overlay">
+            <div>Use Template</div>
+            <div class="badge">chikorita</div>
+          </div>
+        </div>
+
+        <div class="template-card" onclick="goLogin()">
+          <div class="template-preview"><img src="assets/ditto.jpg" alt="Ditto"></div>
+          <div class="template-overlay">
+            <div>Use Template</div>
+            <div class="badge">ditto</div>
+          </div>
+        </div>
+
+        <div class="template-card" onclick="goLogin()">
+          <div class="template-preview"><img src="assets/gengar.jpg" alt="Gengar"></div>
+          <div class="template-overlay">
+            <div>Use Template</div>
+            <div class="badge">gengar</div>
+          </div>
+        </div>
+
+        <div class="template-card" onclick="goLogin()">
+          <div class="template-preview"><img src="assets/glalie.jpg" alt="Glalie"></div>
+          <div class="template-overlay">
+            <div>Use Template</div>
+            <div class="badge">glalie</div>
+          </div>
+        </div>
+
+        <div class="template-card" onclick="goLogin()">
+          <div class="template-preview"><img src="assets/kakuna.jpg" alt="Kakuna"></div>
+          <div class="template-overlay">
+            <div>Use Template</div>
+            <div class="badge">kakuna</div>
+          </div>
+        </div>
+
+        <div class="template-card" onclick="goLogin()">
+          <div class="template-preview"><img src="assets/leafish.jpg" alt="Leafish"></div>
+          <div class="template-overlay">
+            <div>Use Template</div>
+            <div class="badge">leafish</div>
+          </div>
+        </div>
+
+        <div class="template-card" onclick="goLogin()">
+          <div class="template-preview"><img src="assets/nosepass.jpg" alt="Nosepass"></div>
+          <div class="template-overlay">
+            <div>Use Template</div>
+            <div class="badge">nosepass</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="section" id="reviews">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">What Our Users Say</h2>
+          <p class="section-sub">Loved by students and job seekers for fast, professional resumes.</p>
+        </div>
+      </div>
+
+      <div class="review-wrap">
+        <div class="review" id="reviewCard">
+          <i class="fa-solid fa-quote-left quote"></i>
+          <p id="reviewText">"Resume Builder helped me land my dream job in weeks! Templates are amazing."</p>
+          <h4 id="reviewAuthor">– Priya S.</h4>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2025 Resume Builder. All rights reserved.</footer>
+  </main>
+
+  <script>
+    function goLogin(){
+      window.location.href = "login.html";
+    }
+
+    // Reviews carousel
+    const reviews = [
+      { text: `"Resume Builder helped me land my dream job in weeks! Templates are amazing."`, author: "– Priya S." },
+      { text: `"So easy to use and professional results. I highly recommend it."`, author: "– Arjun K." },
+      { text: `"I never thought building a resume could be this fast and polished."`, author: "– Meera P." },
+      { text: `"The templates are modern and recruiter-friendly. Great tool!"`, author: "– Rohit M." },
+      { text: `"Amazing platform, saved me hours of work!"`, author: "– Anjali R." },
+      { text: `"Professional design and easy editor. Highly recommended."`, author: "– Karan S." },
+      { text: `"My resume now looks stunning. Recruiters noticed immediately!"`, author: "– Sneha P." },
+    ];
+
+    const reviewText = document.getElementById("reviewText");
+    const reviewAuthor = document.getElementById("reviewAuthor");
+
+    let idx = 0;
+    setInterval(() => {
+      idx = (idx + 1) % reviews.length;
+      reviewText.textContent = reviews[idx].text.replaceAll('"','');
+      reviewAuthor.textContent = reviews[idx].author;
+    }, 4000);
+  </script>
+</body>
+</html>

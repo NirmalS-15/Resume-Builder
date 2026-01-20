@@ -1,0 +1,83 @@
+<style>
+  .t-leafish{
+    font-family:var(--resume-font,Inter),sans-serif;
+    width:100%; min-height:297mm; background:#fff; color:#111; padding:26px;
+  }
+  .t-leafish .top{
+    display:grid; grid-template-columns: 100px 1fr; gap:14px; align-items:start;
+  }
+  .t-leafish .photo img{
+    width:100px;height:100px;object-fit:cover;border-radius:12px;border:1px solid rgba(0,0,0,0.10);
+  }
+  .t-leafish .brand{ font-weight:900; color:var(--resume-primary,#5d93bc); }
+  .t-leafish h1{ margin:0; font-size:30px; }
+  .t-leafish h2{ margin:6px 0 0; font-size:13px; color:#444; }
+  .t-leafish .bar{ margin:12px 0; border-top:3px solid var(--resume-primary,#5d93bc); }
+  .t-leafish .row{ display:grid; grid-template-columns: 160px 1fr; gap:18px; padding:10px 0; }
+  .t-leafish .label{ font-weight:900; color:var(--resume-primary,#5d93bc); }
+  .t-leafish .box{ font-size:12.6px; line-height:1.65; }
+  .t-leafish ul{ margin:8px 0 0 18px; padding:0; }
+  .t-leafish li{ margin:6px 0; }
+  .t-leafish a{ color:#1f4fd1; text-decoration:none; }
+</style>
+
+<div class="t-leafish">
+  <div class="top">
+    <div class="photo"><img id="resumePhoto" class="resume-photo" alt="photo"></div>
+    <div>
+      <div class="brand">europass</div>
+      <h1 id="nameText">YOUR NAME</h1>
+      <h2 id="titleText">YOUR JOB TITLE</h2>
+      <div class="box" style="margin-top:8px;line-height:1.8;">
+        <div id="locationText">Your City</div>
+        <div id="phoneText">+91 00000 00000</div>
+        <div id="emailText">you@email.com</div>
+        <div><a id="linkedinLink" href="#">LinkedIn</a> • <a id="githubLink" href="#">GitHub</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bar"></div>
+
+  <div class="row">
+    <div class="label">Summary</div>
+    <div class="box" id="summaryText"></div>
+  </div>
+
+  <div class="bar"></div>
+
+  <div class="row">
+    <div class="label">Experience</div>
+    <div class="box">
+      <b id="job1YearsText">Years</b> — <b id="job1CompanyText">Company</b><br>
+      <span id="job1TitleText">Job Title</span> • <span id="job1CityText">City</span>
+      <ul id="job1Points"></ul>
+
+      <div style="margin-top:12px;">
+        <b id="job2YearsText">Years</b> — <b id="job2CompanyText">Company</b><br>
+        <span id="job2TitleText">Job Title</span> • <span id="job2CityText">City</span>
+        <ul id="job2Points"></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="bar"></div>
+
+  <div class="row">
+    <div class="label">Education</div>
+    <div class="box">
+      <b id="eduYearsText">Years</b> — <b id="collegeText">College / University</b><br>
+      <span id="eduCityText">City</span><br>
+      <span id="degreeText">Degree</span> — <span id="majorText">Major</span>
+    </div>
+  </div>
+
+  <div class="bar"></div>
+
+  <div class="row">
+    <div class="label">Skills</div>
+    <div class="box">
+      <ul id="skillsList"></ul>
+    </div>
+  </div>
+</div>

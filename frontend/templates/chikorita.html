@@ -1,0 +1,120 @@
+<style>
+  .t-chikorita{
+    font-family:var(--resume-font,Inter),sans-serif;
+    width:100%; min-height:297mm; background:#fff; color:#111;
+    display:grid; grid-template-columns: 66% 34%;
+  }
+  .t-chikorita .main{ padding:26px 22px; }
+  .t-chikorita .sidebar{
+    background: var(--resume-primary, #0a8f6a);
+    color:#fff; padding:26px 18px;
+  }
+  .t-chikorita .header{
+    display:grid; grid-template-columns: 88px 1fr; gap:14px; align-items:center;
+    padding-bottom:14px; border-bottom:2px solid rgba(0,0,0,0.14);
+  }
+  .t-chikorita .photo img{
+    width:88px;height:88px;object-fit:cover;border-radius:12px;border:2px solid #eee;
+  }
+  .t-chikorita h1{ margin:0; font-size:30px; }
+  .t-chikorita h2{ margin:6px 0 0; font-size:14px; font-weight:700; color:#444; }
+  .t-chikorita .meta{ margin-top:10px; display:flex; gap:12px; flex-wrap:wrap; font-size:12px; color:#333; }
+  .t-chikorita .sec{ margin-top:16px; }
+  .t-chikorita .sec h3{
+    margin:0 0 8px; font-size:14px; font-weight:900;
+    border-bottom:2px solid rgba(0,0,0,0.16); padding-bottom:6px;
+  }
+  .t-chikorita .sidebar .sec h3{
+    border-bottom:2px solid rgba(255,255,255,0.35);
+  }
+  .t-chikorita .box{ font-size:12.6px; line-height:1.65; }
+  .t-chikorita ul{ margin:8px 0 0 18px; padding:0; }
+  .t-chikorita li{ margin:6px 0; }
+  .t-chikorita .job{ margin-top:12px; }
+  .t-chikorita .job .row{ display:flex; justify-content:space-between; gap:12px; font-size:12.5px; }
+  .t-chikorita .job .mut{ color:#666; }
+  .t-chikorita a{ color:#fff; text-decoration:underline; text-decoration-color:rgba(255,255,255,0.55); }
+</style>
+
+<div class="t-chikorita">
+  <div class="main">
+    <div class="header">
+      <div class="photo"><img id="resumePhoto" class="resume-photo" alt="photo"></div>
+      <div>
+        <h1 id="nameText">YOUR NAME</h1>
+        <h2 id="titleText">YOUR JOB TITLE</h2>
+        <div class="meta">
+          <span>📍 <span id="locationText">Your City</span></span>
+          <span>☎ <span id="phoneText">+91 00000 00000</span></span>
+          <span>✉ <span id="emailText">you@email.com</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h3 style="color:var(--resume-primary,#0a8f6a)">Summary</h3>
+      <div class="box" id="summaryText"></div>
+    </div>
+
+    <div class="sec">
+      <h3 style="color:var(--resume-primary,#0a8f6a)">Experience</h3>
+
+      <div class="job">
+        <div class="row">
+          <div>
+            <b id="job1CompanyText">Company</b><br>
+            <span id="job1TitleText">Job Title</span>
+          </div>
+          <div style="text-align:right">
+            <b id="job1YearsText">Years</b><br>
+            <span class="mut" id="job1CityText">City</span>
+          </div>
+        </div>
+        <ul id="job1Points"></ul>
+      </div>
+
+      <div class="job">
+        <div class="row">
+          <div>
+            <b id="job2CompanyText">Company</b><br>
+            <span id="job2TitleText">Job Title</span>
+          </div>
+          <div style="text-align:right">
+            <b id="job2YearsText">Years</b><br>
+            <span class="mut" id="job2CityText">City</span>
+          </div>
+        </div>
+        <ul id="job2Points"></ul>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h3 style="color:var(--resume-primary,#0a8f6a)">Education</h3>
+      <div class="box">
+        <b id="collegeText">College / University</b><br>
+        <span id="degreeText">Degree</span> — <span id="majorText">Major</span><br>
+        <span class="mut" id="eduYearsText">Years</span> • <span class="mut" id="eduCityText">City</span>
+      </div>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sec">
+      <h3>Profiles</h3>
+      <div class="box">
+        <div>🔗 <a id="linkedinLink" href="#">LinkedIn</a></div>
+        <div>🔗 <a id="githubLink" href="#">GitHub</a></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h3>Skills</h3>
+      <ul id="skillsList"></ul>
+    </div>
+
+    <div class="sec">
+      <h3>References</h3>
+      <div class="box"><b>Available upon request</b></div>
+    </div>
+  </aside>
+</div>

@@ -1,0 +1,80 @@
+<style>
+  .t-bronzor{
+    font-family:var(--resume-font,Inter),sans-serif;
+    width:100%; min-height:297mm;
+    background:#fff; color:#111;
+    padding:26px;
+  }
+  .t-bronzor h1{ text-align:center; margin:0; font-size:30px; }
+  .t-bronzor h2{ text-align:center; margin:6px 0 0; font-size:14px; color:#444; }
+  .t-bronzor .meta{
+    display:flex; justify-content:center; gap:14px; flex-wrap:wrap;
+    margin:10px 0 14px; font-size:12px;
+  }
+  .t-bronzor hr{ border:none; border-top:1px solid #333; margin:14px 0; }
+  .t-bronzor .row{ display:grid; grid-template-columns:160px 1fr; gap:18px; }
+  .t-bronzor .label{ font-weight:900; }
+  .t-bronzor .box{ font-size:12.6px; line-height:1.65; }
+  .t-bronzor ul{ margin:8px 0 0 18px; }
+</style>
+
+<div class="t-bronzor">
+  <div class="photo" style="display:flex;justify-content:center;margin-bottom:8px;">
+    <img id="resumePhoto" class="resume-photo" style="width:70px;height:70px;border-radius:10px;">
+  </div>
+
+  <h1 id="nameText">YOUR NAME</h1>
+  <h2 id="titleText">YOUR JOB TITLE</h2>
+
+  <div class="meta">
+    <span id="locationText">City</span>
+    <span id="phoneText">Phone</span>
+    <span id="emailText">Email</span>
+    <span><a id="linkedinLink" href="#">LinkedIn</a></span>
+    <span><a id="githubLink" href="#">GitHub</a></span>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="label">Summary</div>
+    <div class="box" id="summaryText"></div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="label">Experience</div>
+    <div class="box">
+      <b id="job1CompanyText">Company</b><br>
+      <span id="job1TitleText">Job Title</span><br>
+      <span id="job1YearsText">Years</span> • <span id="job1CityText">City</span>
+      <ul id="job1Points"></ul>
+
+      <br>
+
+      <b id="job2CompanyText">Company</b><br>
+      <span id="job2TitleText">Job Title</span><br>
+      <span id="job2YearsText">Years</span> • <span id="job2CityText">City</span>
+      <ul id="job2Points"></ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="label">Education</div>
+    <div class="box">
+      <b id="collegeText">College</b><br>
+      <span id="degreeText">Degree</span> — <span id="majorText">Major</span><br>
+      <span id="eduYearsText">Years</span> • <span id="eduCityText">City</span>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="label">Skills</div>
+    <div class="box"><ul id="skillsList"></ul></div>
+  </div>
+</div>

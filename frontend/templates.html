@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select Resume Template | Resume Builder</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel: rgba(255,255,255,0.06);
+      --line: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.65);
+      --brand:#2563eb;
+      --brand2:#7c3aed;
+      --radius:18px;
+      --shadow: 0 24px 80px rgba(0,0,0,0.45);
+    }
+
+    body{
+      margin:0;
+      font-family: Inter, sans-serif;
+      background:
+        radial-gradient(1200px 700px at 30% -10%, rgba(37,99,235,0.30), transparent 60%),
+        radial-gradient(1100px 650px at 85% 0%, rgba(124,58,237,0.28), transparent 60%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    .appbar{
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 16px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(10px);
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:0.2px;
+    }
+    .brand-badge{
+      width:34px;height:34px;
+      border-radius:12px;
+      display:grid;place-items:center;
+      background: linear-gradient(135deg,var(--brand),var(--brand2));
+      box-shadow: 0 10px 28px rgba(37,99,235,0.30);
+    }
+    .brand small{
+      display:block;
+      font-weight:600;
+      color: var(--muted);
+      margin-top:2px;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .btn{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding:10px 12px;
+      border-radius: 12px;
+      font-weight:700;
+      font-size:13px;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      text-decoration:none;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.10);
+    }
+
+    .shell{
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 22px 16px 60px;
+    }
+
+    .title{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      margin: 8px 0 18px;
+      flex-wrap:wrap;
+    }
+    .title h1{
+      margin:0;
+      font-size: 28px;
+      letter-spacing:0.2px;
+    }
+    .title p{
+      margin:6px 0 0;
+      color: var(--muted);
+      max-width: 720px;
+      line-height:1.5;
+      font-size: 13px;
+    }
+
+    .tools{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .search{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background: rgba(255,255,255,0.06);
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 12px;
+      min-width: 260px;
+    }
+    .search i{ color: rgba(255,255,255,0.55); }
+    .search input{
+      border:none;
+      outline:none;
+      background: transparent;
+      color: var(--text);
+      width:100%;
+      font-weight:600;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      cursor:pointer;
+      position:relative;
+      transition: transform .14s ease, border-color .14s ease, background .14s ease;
+    }
+    .card:hover{
+      transform: translateY(-4px);
+      border-color: rgba(37,99,235,0.35);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .thumb{
+      width:100%;
+      aspect-ratio: 1 / 1.414;
+      background: rgba(255,255,255,0.04);
+      overflow:hidden;
+      position:relative;
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.02);
+    }
+
+    .meta{
+      padding: 12px 12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .meta b{
+      font-size:13px;
+      letter-spacing:0.3px;
+      text-transform: capitalize;
+    }
+    .badge{
+      font-size:12px;
+      font-weight:800;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(37,99,235,0.18);
+      border:1px solid rgba(37,99,235,0.35);
+      color: rgba(255,255,255,0.95);
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background: rgba(10,18,32,0.35);
+      backdrop-filter: blur(1px);
+      opacity:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition: opacity .14s ease;
+    }
+    .card:hover .overlay{ opacity:1; }
+    .use{
+      background: linear-gradient(135deg,var(--brand),var(--brand2));
+      border:none;
+      color:#fff;
+      font-weight:900;
+      padding: 12px 14px;
+      border-radius: 14px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      box-shadow: 0 20px 70px rgba(0,0,0,0.35);
+    }
+
+    footer{
+      text-align:center;
+      color: rgba(255,255,255,0.55);
+      padding: 26px 0 10px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 980px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 620px){
+      .grid{ grid-template-columns: 1fr; }
+      .search{ min-width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="appbar">
+    <div class="brand">
+      <div class="brand-badge"><i class="fa-solid fa-layer-group"></i></div>
+      <div>
+        Resume Builder
+        <small>Choose a template to start editing</small>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="dashboard.html"><i class="fa-solid fa-arrow-left"></i> Back</a>
+      <a class="btn" href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+  </header>
+
+  <div class="shell">
+    <div class="title">
+      <div>
+        <h1>Select Your Resume Template</h1>
+        <p>Pick a design and start customizing your resume. Your details will update live in the editor.</p>
+      </div>
+
+      <div class="tools">
+        <div class="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input id="searchInput" placeholder="Search templates (e.g., gengar)" />
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" id="templatesGrid">
+      <div class="card" data-name="azurill" onclick="selectTemplate('azurill')">
+        <div class="thumb">
+          <img src="assets/azurill.jpg" alt="Azurill Template">
+          <div class="overlay"><div class="use"><i class="fa-solid fa-wand-magic-sparkles"></i> Use Template</div></div>
+        </div>
+        <div class="meta"><b>Azurill</b><span class="badge">azurill</span></div>
+      </div>
+
+      <div class="card" data-name="bronzor" onclick="selectTemplate('bronzor')">
+        <div class="thumb">
+          <img src="assets/bronzor.jpg" alt="Bronzor Template">
+          <div class="overlay"><div class="use"><i class="fa-solid fa-wand-magic-sparkles"></i> Use Template</div></div>
+        </div>
+        <div class="meta"><b>Bronzor</b><span class="badge">bronzor</span></div>
+      </div>
+
+      <div class="card" data-name="chikorita" onclick="selectTemplate('chikorita')">
+        <div class="thumb">
+          <img src="assets/chikorita.jpg" alt="Chikorita Template">
+          <div class="overlay"><div class="use"><i class="fa-solid fa-wand-magic-sparkles"></i> Use Template</div></div>
+        </div>
+        <div class="meta"><b>Chikorita</b><span class="badge">chikorita</span></div>
+      </div>
+
+      <div class="card" data-name="ditto" onclick="selectTemplate('ditto')">
+        <div class="thumb">
+          <img src="assets/ditto.jpg" alt="Ditto Template">
+          <div class="overlay"><div class="use"><i class="fa-solid fa-wand-magic-sparkles"></i> Use Template</div></div>
+        </div>
+        <div class="meta"><b>Ditto</b><span class="badge">ditto</span></div>
+      </div>
+
+      <div class="card" data-name="gengar" onclick="selectTemplate('gengar')">
+        <div class="thumb">
+          <img src="assets/gengar.jpg" alt="Gengar Template">
+          <div class="overlay"><div class="use"><i class="fa-solid fa-wand-magic-sparkles"></i> Use Template</div></div>
+        </div>
+        <div class="meta"><b>Gengar</b><span class="badge">gengar</span></div>
+      </div>
+
+      <div class="card" data-name="glalie" onclick="selectTemplate('glalie')">
+        <div class="thumb">
+          <img src="assets/glalie.jpg" alt="Glalie Template">
+          <div class="overlay"><div class="use"><i class="fa-solid fa-wand-magic-sparkles"></i> Use Template</div></div>
+        </div>
+        <div class="meta"><b>Glalie</b><span class="badge">glalie</span></div>
+      </div>
+
+      <div class="card" data-name="kakuna" onclick="selectTemplate('kakuna')">
+        <div class="thumb">
+          <img src="assets/kakuna.jpg" alt="Kakuna Template">
+          <div class="overlay"><div class="use"><i class="fa-solid fa-wand-magic-sparkles"></i> Use Template</div></div>
+        </div>
+        <div class="meta"><b>Kakuna</b><span class="badge">kakuna</span></div>
+      </div>
+
+      <div class="card" data-name="leafish" onclick="selectTemplate('leafish')">
+        <div class="thumb">
+          <img src="assets/leafish.jpg" alt="Leafish Template">
+          <div class="overlay"><div class="use"><i class="fa-solid fa-wand-magic-sparkles"></i> Use Template</div></div>
+        </div>
+        <div class="meta"><b>Leafish</b><span class="badge">leafish</span></div>
+      </div>
+
+      <div class="card" data-name="nosepass" onclick="selectTemplate('nosepass')">
+        <div class="thumb">
+          <img src="assets/nosepass.jpg" alt="Nosepass Template">
+          <div class="overlay"><div class="use"><i class="fa-solid fa-wand-magic-sparkles"></i> Use Template</div></div>
+        </div>
+        <div class="meta"><b>Nosepass</b><span class="badge">nosepass</span></div>
+      </div>
+    </div>
+
+    <footer>© 2025 Resume Builder. All rights reserved.</footer>
+  </div>
+
+  <script>
+    function selectTemplate(templateName) {
+      localStorage.setItem("selectedTemplate", templateName);
+      window.location.href = "editor.html";
+    }
+
+    const searchInput = document.getElementById("searchInput");
+    const grid = document.getElementById("templatesGrid");
+
+    if (searchInput && grid) {
+      searchInput.addEventListener("input", () => {
+        const q = searchInput.value.trim().toLowerCase();
+        grid.querySelectorAll(".card").forEach(card => {
+          const name = (card.getAttribute("data-name") || "").toLowerCase();
+          card.style.display = name.includes(q) ? "" : "none";
+        });
+      });
+    }
+  </script>
+</body>
+</html>

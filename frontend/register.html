@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register | Resume Builder</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel: rgba(255,255,255,0.06);
+      --line: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.65);
+      --brand:#2563eb;
+      --brand2:#7c3aed;
+      --radius:18px;
+      --shadow: 0 24px 80px rgba(0,0,0,0.45);
+    }
+
+    body{
+      margin:0;
+      font-family: Inter, sans-serif;
+      background:
+        radial-gradient(1200px 700px at 30% -10%, rgba(37,99,235,0.30), transparent 60%),
+        radial-gradient(1100px 650px at 85% 0%, rgba(124,58,237,0.28), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .appbar{
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 16px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(10px);
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+    }
+    .brand-badge{
+      width:34px;height:34px;
+      border-radius:12px;
+      display:grid;place-items:center;
+      background: linear-gradient(135deg,var(--brand),var(--brand2));
+      box-shadow: 0 10px 28px rgba(37,99,235,0.30);
+    }
+    .brand small{
+      display:block;
+      font-weight:600;
+      color: var(--muted);
+      margin-top:2px;
+    }
+
+    .nav-actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .btn{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding:10px 12px;
+      border-radius: 12px;
+      font-weight:700;
+      font-size:13px;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      text-decoration:none;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.10);
+    }
+
+    .shell{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
+
+    .auth-wrap{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .panel{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .promo{
+      padding: 22px;
+    }
+    .promo h1{
+      margin:0;
+      font-size: 32px;
+      letter-spacing: 0.2px;
+      line-height: 1.15;
+    }
+    .promo p{
+      margin:10px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      max-width: 52ch;
+    }
+
+    .promo-card{
+      margin-top: 16px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      border-radius: 16px;
+      padding: 14px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .promo-card i{
+      width:42px;height:42px;
+      border-radius:16px;
+      display:grid;place-items:center;
+      background: rgba(124,58,237,0.18);
+      border:1px solid rgba(124,58,237,0.35);
+    }
+    .promo-card b{ display:block; font-size:13px; }
+    .promo-card span{ color: var(--muted); font-size:12px; }
+
+    .promo img{
+      width:100%;
+      max-width: 520px;
+      margin-top: 16px;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      display:block;
+    }
+
+    .form{
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .form-inner{
+      max-width: 420px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .form h2{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: 0.2px;
+    }
+    .form p{
+      margin:8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .field{ margin-top: 14px; }
+    .label{
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 8px;
+      display:block;
+      letter-spacing: 0.2px;
+    }
+
+    .input{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,0.18);
+      border-radius: 14px;
+      padding: 12px 12px;
+      transition: border-color .12s ease, box-shadow .12s ease, background .12s ease;
+    }
+    .input:focus-within{
+      border-color: rgba(124,58,237,0.55);
+      box-shadow: 0 0 0 4px rgba(124,58,237,0.15);
+      background: rgba(0,0,0,0.22);
+    }
+    .input i{
+      color: rgba(255,255,255,0.55);
+      width: 18px;
+      text-align:center;
+    }
+    .input input{
+      width:100%;
+      border:0;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .input input::placeholder{ color: rgba(255,255,255,0.35); }
+
+    .primary{
+      margin-top: 14px;
+      width:100%;
+      border:0;
+      border-radius: 14px;
+      padding: 12px 14px;
+      cursor:pointer;
+      color:white;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      background: linear-gradient(135deg,var(--brand),var(--brand2));
+      transition: transform .12s ease, filter .12s ease;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      align-items:center;
+      font-size: 14px;
+    }
+    .primary:hover{ transform: translateY(-1px); filter: brightness(1.05); }
+    .primary:disabled{ opacity:.6; cursor:not-allowed; transform:none; }
+
+    .row{
+      margin-top: 12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .link{
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .link:hover{ text-decoration: underline; }
+
+    .status{
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      min-height: 18px;
+    }
+
+    footer{
+      text-align:center;
+      color: rgba(255,255,255,0.55);
+      padding: 20px 0 10px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 900px){
+      .auth-wrap{ grid-template-columns: 1fr; }
+      .promo img{ max-width: 100%; }
+      .form{ justify-content: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="appbar">
+    <div class="brand">
+      <div class="brand-badge"><i class="fa-solid fa-file-lines"></i></div>
+      <div>
+        Resume Builder
+        <small>Create your account</small>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <a class="btn" href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a class="btn" href="login.html"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="auth-wrap">
+      <!-- Left promo -->
+      <div class="panel promo">
+        <h1>Create your account ✨<br><span style="color:rgba(255,255,255,0.78)">Start building your resume today.</span></h1>
+        <p>Register to save your progress, choose templates, and download your resume anytime.</p>
+
+        <div class="promo-card">
+          <i class="fa-solid fa-shield-heart"></i>
+          <div>
+            <b>Secure login</b>
+            <span>Your account stays protected</span>
+          </div>
+        </div>
+
+        <div class="promo-card">
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+          <div>
+            <b>Save & continue</b>
+            <span>Edit later from dashboard</span>
+          </div>
+        </div>
+
+        <img src="assets/resume-preview.png" alt="Resume Preview">
+      </div>
+
+      <!-- Right form -->
+      <div class="panel form">
+        <div class="form-inner">
+          <h2>Register</h2>
+          <p>Create a new account to continue.</p>
+
+          <form id="registerForm">
+            <div class="field">
+              <label class="label" for="name">Full Name</label>
+              <div class="input">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="name" placeholder="Enter your name" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label" for="email">Email</label>
+              <div class="input">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" id="email" placeholder="Enter your email" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label" for="password">Password</label>
+              <div class="input">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="password" placeholder="Create a password" required>
+              </div>
+            </div>
+
+            <button type="submit" class="primary" id="registerBtn">
+              Register <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+            <div class="status" id="statusText"></div>
+
+            <div class="row">
+              <span style="color:var(--muted);font-size:12px;">Already have an account?</span>
+              <a class="link" href="login.html">Login →</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2025 Resume Builder. All rights reserved.</footer>
+  </main>
+
+  <script>
+    const API = "http://localhost:5000";
+    const form = document.getElementById("registerForm");
+    const statusText = document.getElementById("statusText");
+    const btn = document.getElementById("registerBtn");
+
+    // Validation function
+    function validateRegisterForm(name, email, password) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!name) {
+        return "Full name is required.";
+      }
+      if (!email) {
+        return "Email is required.";
+      }
+      if (!emailRegex.test(email)) {
+        return "Please enter a valid email address.";
+      }
+      if (!password || password.length < 6) {
+        return "Password must be at least 6 characters long.";
+      }
+      return null; // No errors
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      statusText.textContent = "";
+      btn.disabled = true;
+      statusText.textContent = "Creating account...";
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      // Validate form
+      const validationError = validateRegisterForm(name, email, password);
+      if (validationError) {
+        statusText.textContent = validationError;
+        btn.disabled = false;
+        return;
+      }
+
+      try {
+        const res = await fetch(`${API}/api/auth/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password })
+        });
+
+        let data = {};
+        const ct = res.headers.get("content-type") || "";
+        if (ct.includes("application/json")) data = await res.json();
+        else data = { message: await res.text() };
+
+        if (res.ok) {
+          statusText.textContent = "Registered ✅ Redirecting to login...";
+          setTimeout(() => window.location.href = "login.html", 500);
+        } else {
+          statusText.textContent = data.message || "Registration failed";
+          btn.disabled = false;
+        }
+      } catch (err) {
+        console.error(err);
+        statusText.textContent = "Error registering. Try again.";
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
